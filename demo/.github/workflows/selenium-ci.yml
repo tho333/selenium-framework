@@ -10,6 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         browser: [chrome, firefox]
     steps:
@@ -28,5 +29,5 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v3
       with:
-        name: surefire-reports-${{ matrix.browser }}
+        name: test-results-${{ matrix.browser }}
         path: target/surefire-reports/
